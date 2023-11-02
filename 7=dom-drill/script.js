@@ -11,7 +11,6 @@ for(const i of list.children)
   //remove duplicate children
   duplicate.forEach(j => {
     if(i.isEqualNode(j)){
-      console.log(i.textContent);
       list.removeChild(i);
     };
   });
@@ -56,9 +55,11 @@ document.body.querySelector("select").addEventListener("change",function(e){
 document.body.addEventListener("keyup",function(e){
   if (e.keyCode===82){
     for (let i = 0; i < list.childElementCount; i++) {
-      let randomi=1+Math.floor(Math.random()*(list.childElementCount-1));
+      let randomi=Math.floor(Math.random()*(list.childElementCount));
       console.log(randomi);
-      list.appendChild(list.childNodes[randomi]);
+      if(list.childNodes[randomi].textContent !== "Fast and Furious")list.appendChild(list.childNodes[randomi]);
     };
   };
+  //clone f&f on d key press
+  if (e.key==="d") list.prepend(list.childNodes[0].cloneNode(true));
 });

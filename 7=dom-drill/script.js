@@ -1,16 +1,26 @@
 
 let list=document.body.querySelector("ul");
-for(const i of list.childNodes)
+let duplicate=[];
+for(const i of list.children)
 {
   //Use a condition in the loop to only iterate over element nodes (see: nodeTypes. Use child.nodeType === 1)
-  if(i.nodeType===1)
-  {
-    //Find the element that contains Fast and Furious. If it's not the first element move it to the top of the list
-    //add a class .important to the element
-    if(i.textContent=="Fast and Furious"){
-      list.prepend(i);
-      i.classList.add("important");//why doesnt it know classlist exists here?? tf
-    }
+  if(i.nodeType!==1){
+    // list.removeChild(i);
+    break;
+  }
+  //remove duplicate children
+  duplicate.forEach(j => {
+    if(i.isEqualNode(j)){
+      console.log(i.textContent);
+      list.removeChild(i);
+    };
+  });
+  duplicate.push(i);
+  //Find the element that contains Fast and Furious. If it's not the first element move it to the top of the list
+  //add a class .important to the element
+  if(i.textContent==="Fast and Furious"){
+    list.prepend(i);
+    i.classList.add("important");
   };
 };
 //Create a new <div> before the list, using createElement and insertBefore
@@ -30,7 +40,6 @@ newDiv.appendChild(newSec);
 // only display items of the list that have the class .important. 
 //(hint: you can toggle visibility using element.style.visibility = 'hidden')
 document.body.querySelector("select").addEventListener("change",function(e){
-  let list=document.body.querySelector("ul");
   for(const i of list.children)
   {
     //if important 
@@ -41,5 +50,15 @@ document.body.querySelector("select").addEventListener("change",function(e){
     }
     //else show all
     else i.style.visibility="visible";
+  };
+});
+// Add an eventListener on the document body, listening for keyup.  r key >shuffle list, keep F&F #1
+document.body.addEventListener("keyup",function(e){
+  if (e.keyCode===82){
+    for (let i = 0; i < list.childElementCount; i++) {
+      let randomi=1+Math.floor(Math.random()*(list.childElementCount-1));
+      console.log(randomi);
+      list.appendChild(list.childNodes[randomi]);
+    };
   };
 });

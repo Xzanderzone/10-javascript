@@ -59,10 +59,9 @@ const newsection=document.createElement("section");
 
 // Find a way so that everytime you load the page the order of the elements changes!
 let list=["Lucas", "Kilian", "Alec", "Mohamed", "Pieter", "Rebecca", "Alessandro", "Josué", "Thibault", "Eduarda", "Mohammed", "Funda", "Luis", "Alexandru", "Andrej", "Danté", "Jonasi", "Kelsey", "Rana", "Jana", "Sieglinde", "Gustave", "Sezin", "Thierry", "Sylvie", "Anaïs"];
-let listlength=list.length;
-for (let i = 0; i < listlength; i++) {
+for (let i = 0; i < list.length; i++) {
   let randomi=Math.floor(Math.random()*list.length);
-  console.log(randomi,list.length,list[randomi]);
-  Learner(list.pop(randomi),newsection);
+  // console.log(randomi,list.length,list[randomi]);
+  Learner(list[randomi],newsection);
 }
 document.querySelector("article").appendChild(newsection);

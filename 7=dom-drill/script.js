@@ -5,7 +5,7 @@ for(const i of list.children)
 {
   //Use a condition in the loop to only iterate over element nodes (see: nodeTypes. Use child.nodeType === 1)
   if(i.nodeType!==1){
-    // list.removeChild(i);
+    list.removeChild(i);
     break;
   }
   //remove duplicate children

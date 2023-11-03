@@ -1,97 +1,6 @@
-const collection =[ 
-  {
-    name: "Pulp Fiction",
-    director: "Quentin Tarantino",
-    releaseYear: 1994,
-    picture: "./images/pulpfiction.jpg",
-    genre: ["Crime", "Drama"],
-    cast: ["John Travolta", "Samuel L Jackson", "Uma Thurman", "Amanda Plummer"],
-    summary:"The path of the righteous man is beset on all sides by the inequities of the selfish and the tyranny of evil men. Blessed is he who in the name of charity and good will shepherds the weak through the valley of darkness, for he is truly his brother's keeper and the finder of lost children."
-  },  
-  {
-    name: "Vox Machina",
-    director: "Neal Acree",
-    releaseYear: 2008,
-    picture: "./images/voxmachina.jpg",
-    genre: ["action", "adventure","comedy drama","fantasy"],
-    cast: ["Matthew Mercer", "Marisha Ray", "Ashley Johnson", "Laura Bailey","Sam Riegel","Travis Willingham","Liam O'Brien","Taliesin Jaffe"],
-    summary:"Vox Machina, a band of eight unlikely heroes, find themselves on a quest to save the realm of Exandria from dark magical forces"
-  
-  },
-  {
-    name: "Breaking Bad",
-    director: "Vince Gilligan",
-    releaseYear: 2008,
-    picture: "./images/breakingbad.jpg",
-    genre: ["Crime", "Drama","Thriller","Dark Comedy","Neo-western","Tragedy"],
-    cast: ["Bryan Cranston", "Aaron Paul", "Anna Gunn", "Dean Norris","RJ Mitte","Bob Odenkirk","Betsy Brandt","Jonathan Banks"],
-    summary:"Walter White, a chemistry teacher, discovers that he has cancer and decides to get into the meth-making business to repay his medical debts. His priorities begin to change when he partners with Jesse."
-  },
-  {
-    name: "Supernatural",
-    director: "Eric kripke",
-    releaseYear: 2005,
-    picture: "./images/supernatural.jpg",
-    genre: ["Action", "Adventure","Drama","Fantasy","Horror","Mystery"],
-    cast: ["Jensen Ackles","Jared Padelecki","Misha Collins","Mark Sheppard","Jeffrey Dean Morgan","Jim Beaver"],
-    summary:"When a woman mysteriously dies due to a supernatural event, her husband and her sons set out on a mission to find out the truth, while battling various paranormal beings."
-  },
-  {
-    name: "Lucifer",
-    director: "Alex Katsnelson",
-    releaseYear: 2021,
-    picture: "./images/lucifer.jpg",
-    genre: ["Mystery","Occult","detective fiction","Urban fantasy","Police procedural","Comedy drama",],
-    cast: ["Tom Elis","Lauren German","Kevin Alejandro","Lesley-Ann-Brandt","D.B>Woodside","Aimee Garcia","Rachael Harris","Scarlett Evstevez"],
-    summary:" the original fallen angel, who has become dissatisfied with his life in hell. After abandoning his throne and retiring to Los Angeles"
-  },
-  {
-    name: "Vox Machina",
-    director: "Neal Acree",
-    releaseYear: 2022,
-    picture: "./images/voxmachina.jpg",
-    genre: ["action", "adventure","comedy drama","fantasy"],
-    cast: ["Matthew Mercer", "Marisha Ray", "Ashley Johnson", "Laura Bailey","Sam Riegel","Travis Willingham","Liam O'Brien","Taliesin Jaffe"],
-    summary:""
-  },
-  {
-    name: "Vox Machina",
-    director: "Neal Acree",
-    releaseYear: 2022,
-    picture: "./images/voxmachina.jpg",
-    genre: ["action", "adventure","comedy drama","fantasy"],
-    cast: ["Matthew Mercer", "Marisha Ray", "Ashley Johnson", "Laura Bailey","Sam Riegel","Travis Willingham","Liam O'Brien","Taliesin Jaffe"],
-    summary:""
-  },
-  {
-    name: "Vox Machina",
-    director: "Neal Acree",
-    releaseYear: 2022,
-    picture: "./images/voxmachina.jpg",
-    genre: ["action", "adventure","comedy drama","fantasy"],
-    cast: ["Matthew Mercer", "Marisha Ray", "Ashley Johnson", "Laura Bailey","Sam Riegel","Travis Willingham","Liam O'Brien","Taliesin Jaffe"],
-    summary:""
-  },
-  {
-    name: "Vox Machina",
-    director: "Neal Acree",
-    releaseYear: 2022,
-    picture: "./images/voxmachina.jpg",
-    genre: ["action", "adventure","comedy drama","fantasy"],
-    cast: ["Matthew Mercer", "Marisha Ray", "Ashley Johnson", "Laura Bailey","Sam Riegel","Travis Willingham","Liam O'Brien","Taliesin Jaffe"],
-    summary:""
-  },
-  {
-    name: "Vox Machina",
-    director: "Neal Acree",
-    releaseYear: 2022,
-    picture: "./images/voxmachina.jpg",
-    genre: ["action", "adventure","comedy drama","fantasy"],
-    cast: ["Matthew Mercer", "Marisha Ray", "Ashley Johnson", "Laura Bailey","Sam Riegel","Travis Willingham","Liam O'Brien","Taliesin Jaffe"],
-    summary:""
-  },
-];
+import {collection}  from "./collection.js";
 
+//completely useless fade in on page load but its fun xd
 function unfade(element) {
   var op = 0.1;  
   var timer = setInterval(function () {
@@ -100,21 +9,23 @@ function unfade(element) {
       }
       element.style.opacity = op;
       element.style.filter = 'alpha(opacity=' + op * 100 + ")";
-      op += op * 0.1;
+      op += op * 0.02;
   }, 10);
 }
-
+document.body.style.color="#FFFFFF";
+document.body.style.fontFamily="san-serif";
 //header
 let docheader=document.body.querySelector("header");
 docheader.style.alignContent="center";
 docheader.style.textAlign="center";
 docheader.style.width="100vw";
 docheader.style.minHeight="10vw";
-docheader.style.backgroundColor="red";
+docheader.style.backgroundColor="#101010";
 docheader.style.display="flex";
 docheader.style.justifyContent="space-evenly";
 
 let titleDiv=document.createElement("div");
+titleDiv.style.paddingRight="100px";
 let title=document.createElement("h1");
 title.innerHTML="Series Archive";
 let titleText=document.createElement("h2");
@@ -136,7 +47,7 @@ docmain.style.alignContent="center";
 docmain.style.textAlign="center";
 docmain.style.width="100vw";
 docmain.style.minHeight="15vw";
-docmain.style.backgroundColor="green";
+docmain.style.backgroundColor="#505050";
 docmain.style.flexWrap="wrap";
 docmain.style.justifyContent="space-evenly";
 
@@ -151,7 +62,7 @@ collection.forEach(element => {
   card.style.maxWidth="400px";
   card.style.borderRadius="5px";
   card.style.textAlign="center";
-  card.style.backgroundColor="gray";
+  card.style.backgroundColor="#303030";
 
   //top image
   let cardImg=document.createElement("img");
@@ -166,9 +77,9 @@ collection.forEach(element => {
     let genre=document.createElement("p");
     genre.style.display="inline";
     genre.style.marginLeft="7px";
-    genre.style.padding="2px";
-    genre.style.backgroundColor="yellow";
-    genre.style.borderRadius="5px";
+    genre.style.padding="1.5px";
+    genre.style.backgroundColor="#004040";
+    genre.style.borderRadius="7px";
     genre.innerHTML=elementGenre;
     cardGenres.appendChild(genre);
   });
@@ -209,7 +120,7 @@ docfooter.style.alignContent="center";
 docfooter.style.textAlign="center";
 docfooter.style.width="100vw";
 docfooter.style.minHeight="15vw";
-docfooter.style.backgroundColor="blue";
+docfooter.style.backgroundColor="#101010";
 
 // Move your const collectionfrom your script.js to a new file called collection.js and Import that collection into your script file.
 

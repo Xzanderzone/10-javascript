@@ -45,9 +45,8 @@ const LEVEL_3 = [
 const LEVELS=[LEVEL_1,LEVEL_2,LEVEL_3];
 
 function generateArea(level){
-  playerLocationX=0;
-  playerLocationY=0;
-  CURRENTLEVEL=level;
+  CURRENTLEVEL=[];
+  for (let i = 0; i < level.length; i++)CURRENTLEVEL[i] = level[i].slice();
   let area=document.body.querySelector("main");
   let maze=document.createElement("div");
   maze.classList.add("maze");

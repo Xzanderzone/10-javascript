@@ -1,17 +1,15 @@
 import {collection}  from "./collection.js";
-
 //completely useless fade in on page load but its fun xd
 function unfade(element) {
-  var op = 0.1;  
-  var timer = setInterval(function () {
-      if (op >= 1){
-          clearInterval(timer);
-      }
+  let op = 0.1;  
+  let timer = setInterval(function () {
+      if (op >= 1)clearInterval(timer);
       element.style.opacity = op;
       element.style.filter = 'alpha(opacity=' + op * 100 + ")";
       op += op * 0.02;
   }, 10);
-}
+};
+
 document.body.style.color="#FFFFFF";
 document.body.style.fontFamily="san-serif";
 //header
@@ -73,6 +71,7 @@ collection.forEach(element => {
 
   //genres
   let cardGenres=document.createElement("div");
+  cardGenres.classList.add("genres");
   element.genre.forEach(elementGenre => {
     let genre=document.createElement("p");
     genre.style.display="inline";
@@ -96,24 +95,32 @@ collection.forEach(element => {
   let cardSummary=document.createElement("h5");
   cardSummary.style.marginLeft="75px";
   cardSummary.style.marginRight="75px";
-  cardSummary.style.flexWrap="wrap";
   cardSummary.innerHTML=element.summary;
 
-
+  //cast --hiddden if not expanded
+  let cardCast=document.createElement("div");
+  cardCast.classList.add("Cast");
+  cardCast.style.display="none";
+  cardCast.style.marginTop="20px";
+  element.cast.forEach(elementCast => {
+    let cast=document.createElement("p");
+    cast.style.display="inline";
+    cast.style.marginLeft="8px";
+    cast.style.padding="1.5px";
+    cast.style.backgroundColor="#400040";
+    cast.style.borderRadius="7px";
+    cast.innerHTML=elementCast;
+    cardCast.appendChild(cast);
+  });
   //add everything
   card.appendChild(cardImg);
-  card.appendChild(cardGenres);
   card.appendChild(cardTitle);
   card.appendChild(cardDirector);
   card.appendChild(cardSummary);
+  card.appendChild(cardGenres);
+  card.appendChild(cardCast);
   docmain.appendChild(card);
 });
-
-//hover functionallity
-docmain.querySelectorAll(".Card").forEach(element => {
-  element.addEventListener('mouseover', unfade(element));
-});
-
 
 let docfooter=document.body.querySelector("footer");
 docfooter.style.alignContent="center";
@@ -122,7 +129,68 @@ docfooter.style.width="100vw";
 docfooter.style.minHeight="15vw";
 docfooter.style.backgroundColor="#101010";
 
-// Move your const collectionfrom your script.js to a new file called collection.js and Import that collection into your script file.
+// Now that we are aware of events let's pimp our collection and add some interactivity. For example: When hovering on the card, 
+//it should increase that card in size and create a darker background over everything else.
+let cards = document.getElementsByClassName("Card");
 
-// Now that we are aware of events let's pimp our collection and add some interactivity. For example: When hovering on the card, it should increase that card in size and create a darker background over everything else.
+for (let i = 0; i < cards.length; i++) {
+  cards[i].addEventListener("click", function() {
+    this.classList.toggle("focus");
+    let cast=this.querySelector(".Cast");
+    if(cast.style.display==="none")cast.style.display="";
+    else cast.style.display="none";
+
+  });
+}
+
+//part 2 of the pointless/fun on load fade 
+docmain.querySelectorAll(".Card").forEach(element => {
+  element.addEventListener('mouseover', unfade(element));
+});
+
 // Add some filtering: Searchbar that will filter the cards on title names.
+document.body.addEventListener("keyup",myFunction);
+function myFunction(){
+  let filter = document.body.querySelector(".myInput").value.toUpperCase();
+  if(filter.length<1){
+    let cards=document.body.getElementsByClassName("Card");
+    for(let card=0;card<cards.length;card++){
+      cards[card].style.display = "";
+    };
+  }
+  else{
+    let cards=document.body.getElementsByClassName("Card");
+    for(let card=0;card<cards.length;card++){
+      let series =cards[card].querySelector("h3").textContent;//title
+      let creator=cards[card].querySelector("h4").textContent;//creator
+      let genres= cards[card].querySelector(".genres");//list
+      let actors=collection[card].cast;//omg i could have just selected them like this.....xD
+      let found=false;
+      // console.log(actors);
+      if (creator.toUpperCase().indexOf(filter) > -1) {
+        found=true;
+      }
+      else if (series.toUpperCase().indexOf(filter) > -1) {
+        found=true;
+      }
+      if(genres.childElementCount>0){
+        for (let i = 0; i < genres.childElementCount; i++) {
+          if (genres.children[i].textContent.toUpperCase().indexOf(filter) > -1) {
+            found=true;
+          }
+        };
+      };
+      if(actors.length>0){
+        for (let i = 0; i < actors.length; i++) {
+          // console.log(actors[i]); 
+          if (actors[i].toUpperCase().indexOf(filter) > -1) {
+            found=true;
+          };
+        };
+      };
+      if(found) cards[card].style.display = "";
+      else cards[card].style.display = "none";
+
+    };
+  };
+};

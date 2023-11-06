@@ -1,14 +1,33 @@
+h1{
+  color:rgb(135, 240, 240);
+}
 h3{
   font-size: larger;
   color:rgb(0, 218, 218);
 }
 h4{
   font-size: medium;
-  color:rgb(135, 240, 240);
+  color:#87f0f0;
 }
-h1{
-  color:rgb(135, 240, 240);
+h5{
+  font-size:medium;
 }
 body{
   margin: 0px;
+}
+.myInput {
+  width: 100%;
+  padding: 12px 20px 12px 40px;
+  border: 1px solid #ddd;
+}
+.Card:hover{
+  scale: 1.2;
+}
+.card{
+  height: 400px;
+  max-height: 400px;
+}
+.focus{
+  height: 600px;
+  max-height: 600px;
 }

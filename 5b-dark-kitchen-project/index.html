@@ -1,43 +1,94 @@
 <!DOCTYPE html>
 <html lang="en">
+  <style>
+  :root {
+    --clr-light: #dfdfdf;
+    --clr-dark: #151616;
+    --primary-color: #001522;
+    --secondary-color: #00454e;
+    --header-color:#e2e2e2;
+    --card-color:#a1a1a1;
+  }
+  .darkmode {
+    --clr-light: #151616;
+    --clr-dark: #dfdfdf;
+    --primary-color: rgb(135, 240, 240);
+    --secondary-color: rgb(0, 218, 218);
+    --header-color:#101010;
+    --card-color:#303030;
+  }
+  .dark-mode-toggle{
+    padding: 5px;
+    border-radius: 10px;
+    height: 20px;
+    background-color: var(--clr-dark);
+    color: var(--clr-light);
+  }
+
+  h1{
+    color:var(--primary-color);
+  }
+  h2{
+    color:var(--primary-color);
+  }
+  h3{
+    font-size: larger;
+    color:var(--secondary-color);
+  }
+  h4{
+    font-size: medium;
+    color:var(--primary-color);
+  }
+  body{
+    margin: 0px;
+    background-color: var(--clr-light);
+  }
+  header{
+    position: sticky;
+  }
+  footer{
+    background-color: var(--header-color);
+  }
+  .cart{
+    display: flex;
+    justify-content: center;
+  }
+  .cart h2{
+    display: block;
+  }
+  .cart div{
+    display: block;
+    margin-right: 20px;
+  }
+  .myInput {
+    width: 100%;
+    padding: 12px 20px 12px 40px;
+    border: 2px solid var(--clr-light);
+  }
+  .Card:hover{
+    scale: 1.2;
+  }
+  .Card{
+    background-color: var(--card-color);
+  }
+</style>
 <head>
   <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Exploring the DOM</title>
-
-  <link rel="stylesheet" href="../assets/style.css">
-  <!-- Having JavaScript included here, at the top of the file, ensures it starts loading soon -->
-  <!-- The defer attribute ensures it waits for the HTML to be fully loaded before it actually fires -->
-  <!-- This can prevent a situation where JavaScript tries to work with an element that has not been loaded yet -->
-  <script defer src="script.js"></script>
+  <title>Dark kitchen</title>
 </head>
 <body>
-  <header>
-    <h1>BeCode DOM exploration | <strong>Basics</strong></h1>
+  <header> 
+    <a id="dark-mode-toggle" class="dark-mode-toggle" data-theme-toggle aria-label="Change to light theme">Dark mode</a>
+
   </header>
-
   <main>
-    <section>
-      <h1>Hello DOM</h1>
-
-      <p>The DOM is a powerful tool</p>
-    </section>
-
-    <section id="content">
-      <h2 title="... though non-exhaustive">A list of things DOM you can achieve with the DOM</h2>
-
-      <ul>
-        <li>List all the elements (nodes) on a webpage</li>
-        <li>Modify those nodes programmatically</li>
-        <li>Create new nodes</li>
-        <li>React to user events (mouse clicks, keyboard typing, window resizing, ...)</li>
-      </ul>
-    </section>
+    <input type="text" class="myInput" value="" placeholder="Search for dishes" title="Type in a dish">
   </main>
-
   <footer>
-    All right reserved, blablablabla ...
+    
   </footer>
+  <script type="module" src="./script.js"></script>
+  <script src="darkmode.js"></script>
 </body>
 </html>

@@ -1,0 +1,80 @@
+export const collection =[ 
+  {
+    name: "Pizza Fiction",
+    price: 15,
+    picture: "./images/pulpfiction.jpg",
+    genre: ["Delicious","pizza","cheese"],
+  },  
+  {
+    name: "fried Machina",
+    price: 15,
+    picture: "./images/voxmachina.jpg",
+    genre: ["Healthy"],
+  },
+  {
+    name: "Breaking Eggs",
+    price: 15,
+    picture: "./images/breakingbad.jpg",
+    genre: ["Bacon","Egg","pizza"],
+    },
+  {
+    name: "Supernatural toast",
+    price: 15,
+    picture: "./images/supernatural.jpg",
+    genre: ["rocksalt","Toast","Egg"],
+    },
+  {
+    name: "Lucifer Stick",
+    price: 15,
+    picture: "./images/lucifer.jpg",
+    genre: ["Mystery","spicy"],
+   },
+  {
+    name: "Los Polos nuggets 10pc",
+    price: 15,
+    picture: "./images/gus.jpg",
+    genre: ["chicken", "Tender"],
+     },
+  {
+    name: "Los Polos nuggets 10pc extra crispy",
+    price: 15,
+    picture: "./images/guscrispy.jpg",
+    genre: ["chicken", "crispy"],
+   },
+  {
+    name: "Vox mexicano",
+    price: 15,
+    picture: "./images/voxmachina.jpg",
+    genre: ["healthy", "quality","meat","spices"],
+   },
+  {
+    name: "extra fries",
+    price: 2,
+    picture: "./images/voxmachina.jpg",
+    genre: ["mandatory", "adventure","comedy drama","fantasy"],
+   },
+  {
+    name: "sauce of choise",
+    price: 1,
+    picture: "./images/voxmachina.jpg",
+    genre: ["action", "adventure","comedy drama","fantasy"],
+  },
+  {
+    name: "Bo'Oh'O'Wa'er",
+    price: 5,
+    picture: "./images/water.jpg",
+    genre: ["water", "mineral","drink"],
+  },
+  {
+    name: "Monster",
+    price: 1,
+    picture: "./images/monster.jpg",
+    genre: ["healthy", "energy","drink"],
+   },
+  {
+    name: "just go somewhere else",
+    price: 999,
+    picture: "./images/stay-out-walter.gif",
+    genre: ["vegan"],
+    },
+];

@@ -105,15 +105,17 @@ let cardTitle=document.createElement("h2");
 cardTitle.innerHTML="Your order";
 docfooter.appendChild(cardTitle);
 let cartnames=document.createElement("div");
+cartnames.classList.add("cartnames");
 let cartamounts=document.createElement("div");
+cartamounts.classList.add("cartamounts");
 let cartprices=document.createElement("div");
+cartprices.classList.add("cartprices");
 let shoptotal=0;
 function cartitem(name, price, count) {
   this.name = name;
   this.price = price;
   this.count = count;
 }
-
 let cards = document.getElementsByClassName("Card");
 for (let i = 0; i < cards.length; i++) {
   cards[i].addEventListener("click", function() 
@@ -133,27 +135,38 @@ for (let i = 0; i < cards.length; i++) {
     };
     if(!found){
       shoppingCart.push(item);
+      let text=document.createElement("p");
+      let textamount=document.createElement("p");
+      let textprice=document.createElement("p");
+      text.innerHTML=item.name;
+      textamount.innerHTML=' x'+item.count;
+      textprice.innerHTML=item.price+'$';
+      cartnames.appendChild(text);
+      cartamounts.appendChild(textamount);
+      cartprices.appendChild(textprice);
+      cartui.appendChild(cartnames);
+      cartui.appendChild(cartamounts);
+      cartui.appendChild(cartprices);
     }
     updatecart();
   });
 }
 function updatecart(){
-  cartui="";
   for(let i=0;i<shoppingCart.length;i++){
-    let text=document.createElement("p");
-    let textamount=document.createElement("p");
-    let textprice=document.createElement("p");
-    text.innerHTML=item.name;
-    textamount.innerHTML=' x'+item.count;
-    textprice.innerHTML=item.price+'$';
-    cartnames.appendChild(text);
-    cartamounts.appendChild(textamount);
-    cartprices.appendChild(textprice);
-    cartui.appendChild(cartnames);
-    cartui.appendChild(cartamounts);
-    cartui.appendChild(cartprices);
-  }
-}
+    // let text=cartui.getElementsByClassName("cartnames")[i].textContent;
+    // text=shoppingCart[i].name;
+    cartui.querySelector(".cartamounts").children[i].textContent="x"+shoppingCart[i].count;
+    // console.log(cartui.querySelector(".cartamounts").children[i]);
+    // textamount.innerHTML=' x'+shoppingCart[i].count;
+    // textprice.innerHTML=shoppingCart[i].price+'$';
+    // cartnames.appendChild(text);
+    //cartamounts.appendChild(textamount);
+    // cartprices.appendChild(textprice);
+    // cartui.appendChild(cartnames);
+    //cartui.appendChild(cartamounts);
+    // cartui.appendChild(cartprices);
+  };
+};
 
 docfooter.appendChild(cartui);
 // Add some filtering: Searchbar that will filter the cards on title names.

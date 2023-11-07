@@ -60,7 +60,7 @@ export const collection =[
     genre: ["action", "adventure","comedy drama","fantasy"],
   },
   {
-    name: "Bo'Oh'O'Wa'er",
+    name: "Bo'O'Wa'er",
     price: 5,
     picture: "./images/water.jpg",
     genre: ["water", "mineral","drink"],

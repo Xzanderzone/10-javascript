@@ -135,15 +135,44 @@ for (let i = 0; i < cards.length; i++) {
     };
     if(!found){
       shoppingCart.push(item);
+      //100% sure this can be simplified a lot
       let text=document.createElement("p");
       let textamount=document.createElement("p");
+      let price=document.createElement("div");
       let textprice=document.createElement("p");
+      let textremove=document.createElement("a");
+      let textadd=document.createElement("a");
+      textadd.innerHTML="+";
+      textadd.addEventListener("click",()=>{
+        item.count++;
+        updatecart();
+      });
+      textremove.innerHTML="-";
+      textremove.addEventListener("click",()=>{
+        if(item.count>1)item.count--;
+        else {
+          item.count=0;
+          let index=-1;
+          for(let i=0;i<cartnames.children.length;i++){
+            if(cartnames.children[i].textContent===item.name)index=i;
+          }
+          cartnames.removeChild(cartnames.children[index]);
+          cartamounts.removeChild(cartamounts.children[index]);
+          cartprices.removeChild(cartprices.children[index]);
+          console.log(shoppingCart);
+          shoppingCart.pop(item);
+        };
+        updatecart();
+      });
       text.innerHTML=item.name;
       textamount.innerHTML=' x'+item.count;
       textprice.innerHTML=item.price+'$';
       cartnames.appendChild(text);
       cartamounts.appendChild(textamount);
-      cartprices.appendChild(textprice);
+      price.appendChild(textprice);
+      price.appendChild(textadd);
+      price.appendChild(textremove);
+      cartprices.appendChild(price);
       cartui.appendChild(cartnames);
       cartui.appendChild(cartamounts);
       cartui.appendChild(cartprices);

@@ -99,18 +99,21 @@ docfooter.style.minHeight="15vw";
 // docfooter.style.backgroundColor="#101010";
 
 let shoppingCart=[];
+let shoptotal=0;
 let cartui=document.createElement("div");
 cartui.classList.add("cart");
 let cardTitle=document.createElement("h2");
 cardTitle.innerHTML="Your order";
 docfooter.appendChild(cardTitle);
+let cardPay=document.createElement("a");
+cardPay.innerHTML="Order total:"+shoptotal +"$";
+docfooter.appendChild(cardPay);
 let cartnames=document.createElement("div");
 cartnames.classList.add("cartnames");
 let cartamounts=document.createElement("div");
 cartamounts.classList.add("cartamounts");
 let cartprices=document.createElement("div");
 cartprices.classList.add("cartprices");
-let shoptotal=0;
 function cartitem(name, price, count) {
   this.name = name;
   this.price = price;
@@ -120,7 +123,6 @@ let cards = document.getElementsByClassName("Card");
 for (let i = 0; i < cards.length; i++) {
   cards[i].addEventListener("click", function() 
   {
-    shoptotal+=computeResult(this.children[2].textContent);
     let item=new cartitem(this.children[1].textContent,this.children[2].textContent,1);
     let found=false;
     for(let i=0;i<shoppingCart.length;i++)
@@ -139,6 +141,7 @@ for (let i = 0; i < cards.length; i++) {
       let text=document.createElement("p");
       let textamount=document.createElement("p");
       let price=document.createElement("div");
+      price.classList.add("price");
       let textprice=document.createElement("p");
       let textremove=document.createElement("a");
       let textadd=document.createElement("a");
@@ -151,7 +154,6 @@ for (let i = 0; i < cards.length; i++) {
       textremove.addEventListener("click",()=>{
         if(item.count>1)item.count--;
         else {
-          item.count=0;
           let index=-1;
           for(let i=0;i<cartnames.children.length;i++){
             if(cartnames.children[i].textContent===item.name)index=i;
@@ -181,20 +183,12 @@ for (let i = 0; i < cards.length; i++) {
   });
 }
 function updatecart(){
+  shoptotal=0;
   for(let i=0;i<shoppingCart.length;i++){
-    // let text=cartui.getElementsByClassName("cartnames")[i].textContent;
-    // text=shoppingCart[i].name;
     cartui.querySelector(".cartamounts").children[i].textContent="x"+shoppingCart[i].count;
-    // console.log(cartui.querySelector(".cartamounts").children[i]);
-    // textamount.innerHTML=' x'+shoppingCart[i].count;
-    // textprice.innerHTML=shoppingCart[i].price+'$';
-    // cartnames.appendChild(text);
-    //cartamounts.appendChild(textamount);
-    // cartprices.appendChild(textprice);
-    // cartui.appendChild(cartnames);
-    //cartui.appendChild(cartamounts);
-    // cartui.appendChild(cartprices);
+    shoptotal+=shoppingCart[i].price*shoppingCart[i].count;
   };
+  cardPay.innerHTML="Order total:"+shoptotal +"$";
 };
 
 docfooter.appendChild(cartui);

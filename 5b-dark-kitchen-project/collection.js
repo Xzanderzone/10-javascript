@@ -73,7 +73,7 @@ export const collection =[
    },
   {
     name: "just go somewhere else",
-    price: 999,
+    price: 99,
     picture: "./images/stay-out-walter.gif",
     genre: ["vegan"],
     },
